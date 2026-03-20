@@ -14,6 +14,7 @@ app.use(
       "http://localhost:5173",
       "https://mobilezone.co.nz",
       "https://www.mobilezone.co.nz",
+      "https://main.d11wi47a9v20fx.amplifyapp.com",
     ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
