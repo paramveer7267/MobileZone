@@ -55,7 +55,7 @@ app.post("/send-email", async (req, res) => {
 
     await transporter.sendMail({
       from: process.env.SMTP_USER,
-      to: "paramveer7267@gmail.com",
+      to: "contact@mobilezone.co.nz",
       subject: subject,
       html: `
   <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
