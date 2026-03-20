@@ -3,20 +3,25 @@ import nodemailer from "nodemailer";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+import serverless from "serverless-http";
 
 dotenv.config();
 
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://mobilezone.co.nz"], 
+    origin: [
+      "http://localhost:5173",
+      "https://mobilezone.co.nz",
+      "https://www.mobilezone.co.nz",
+    ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 app.use(bodyParser.json());
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
 
 // Setup SMTP transport
 const transporter = nodemailer.createTransport({
@@ -28,7 +33,9 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS,
   },
 });
-app.get("/", (req, res) => res.send("✅ Server is up and running!"));
+// app.get("/", (req, res) => res.send("✅ Server is up and running!"));
+app.get("/health", (req, res) => res.send("✅ Server is up and running!"));
+
 app.post("/send-email", async (req, res) => {
   try {
     const {
@@ -103,4 +110,5 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+export const handler = serverless(app);

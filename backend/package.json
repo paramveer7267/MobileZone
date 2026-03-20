@@ -17,7 +17,8 @@
     "express": "^5.1.0",
     "fonoapi-nodejs": "^0.1.1",
     "gsmarena-api": "^2.0.5",
-    "nodemailer": "^7.0.6"
+    "nodemailer": "^7.0.6",
+    "serverless-http": "^4.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
